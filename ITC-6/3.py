@@ -1,11 +1,13 @@
-# 1
-# 1 1
-# 1 2 1
-# 1 3 3 1
-# 1 4 6 4 1
-# 1 5 10 10 5 1
-m = 1
 def pascal(n):
-    for i in range(1,n+1):
-        print
-    
+    triangle = [[1]]
+
+    for _ in range(n-1):
+        temp = [0] + triangle[-1] + [0]
+        row = []
+        for j in range(len(triangle[-1])+1):
+            row.append(int(temp[j]) + int(temp[j+1]))
+        triangle.append(row)
+
+    return triangle
+
+print(pascal(6))
